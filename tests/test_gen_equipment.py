@@ -1,9 +1,14 @@
-"""Testy części Osoby 2: python -m unittest discover -s scripts -p 'test_gen_equipment.py'."""
+"""Testy części Osoby 2: python -m unittest discover -s tests -v"""
 
+import sys
 import unittest
 from collections import Counter
 from datetime import date, timedelta
 from decimal import Decimal
+from pathlib import Path
+
+# generatory leżą w scripts/, więc dodajemy ten folder do ścieżki importów
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
 
 from common import COLUMNS, SEED, TODAY, fake, rng, sql_insert
 from gen_equipment import MODEL_CATALOG, generate_equipment
